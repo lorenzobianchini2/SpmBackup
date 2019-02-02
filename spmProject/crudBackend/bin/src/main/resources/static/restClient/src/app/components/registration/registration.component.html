@@ -1,0 +1,96 @@
+<app-nav></app-nav>
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+<div id="form">
+  <form [formGroup]="messageForm" (ngSubmit)="processForm()">
+    <h1>Sign up</h1>
+
+    <div class="error">
+      <div>{{existingUsername}}</div>
+    </div>
+
+    <label>
+      <div class="inputWithIcon">
+        <input type="text" formControlName="usernameReg" [(ngModel)]="user.username" placeholder="Username" title="Username">
+        <i class="fa fa-user fa-lg fa-fw" aria-hidden="true"></i>
+        <div *ngIf="submitted && messageForm.controls.usernameReg.errors" class="feedback">
+          <div *ngIf="messageForm.controls.usernameReg.errors.required">Username is required</div>
+        </div>
+      </div>
+    </label>
+
+    <label>
+      <div class="inputWithIcon">
+        <input type="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" formControlName="passwordReg" class="form-control"
+          [(ngModel)]="user.password" placeholder="Password" title="Password">
+        <i class="fa fa-lock fa-lg fa-fw" aria-hidden="true"></i>
+        <div *ngIf="submitted && messageForm.controls.passwordReg.errors" class="feedback">
+          <div *ngIf="messageForm.controls.passwordReg.errors.required">Password is required</div>
+          <div *ngIf="messageForm.controls.passwordReg.errors.pattern">The password must contain:<br>- at least 8
+            characters;<br>- at least one uppercase letter;<br>- at least one lowercase letter;<br>- at least one
+            number.
+          </div>
+        </div>
+      </div>
+    </label>
+
+    <label>
+      <div class="inputWithIcon">
+        <input type="text" formControlName="affiliation" class="form-control" [(ngModel)]="user.affiliation"
+          placeholder="Affiliation" title="Affiliation">
+        <i class="fa fa-industry fa-lg fa-fw" aria-hidden="true"></i>
+        <div *ngIf="submitted && messageForm.controls.affiliation.errors" class="feedback">
+          <div *ngIf="messageForm.controls.affiliation.errors.required">Affiliation is required</div>
+        </div>
+      </div>
+    </label>
+
+    <label>
+      <div class="inputWithIcon">
+        <input type="text" formControlName="fname" class="form-control" [(ngModel)]="user.name" placeholder="Name"
+          title="Name">
+        <i class="fa fa-address-card fa-lg fa-fw" aria-hidden="true"></i>
+        <div *ngIf="submitted && messageForm.controls.fname.errors" class="feedback">
+          <div *ngIf="messageForm.controls.fname.errors.required">Name is required</div>
+        </div>
+      </div>
+    </label>
+
+    <label>
+      <div class="inputWithIcon">
+        <input type="text" formControlName="lname" class="form-control" [(ngModel)]="user.surname" placeholder="Surname"
+          title="Surname">
+        <i class="fa fa-address-card fa-lg fa-fw" aria-hidden="true"></i>
+        <div *ngIf="submitted && messageForm.controls.lname.errors" class="feedback">
+          <div *ngIf="messageForm.controls.lname.errors.required">Surname is required</div>
+        </div>
+      </div>
+    </label>
+
+    <label>
+      <div class="inputWithIcon">
+        <input type="email" formControlName="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" class="form-control"
+          [(ngModel)]="user.email" placeholder="E-Mail address" title="E-Mail address">
+        <i class="fa fa-envelope fa-lg fa-fw" aria-hidden="true"></i>
+        <div *ngIf="submitted && messageForm.controls.email.errors" class="feedback">
+          <div *ngIf="messageForm.controls.email.errors.required">E-Mail address is required</div>
+          <div *ngIf="messageForm.controls.email.errors.pattern">E-Mail is invalid</div>
+        </div>
+      </div>
+    </label>
+
+    <label>
+      <div class="inputWithIcon">
+        <input type="date" formControlName="date" class="form-control" [(ngModel)]="user.date_of_birth" placeholder="Date of birth"
+          title="Date of birth">
+        <i class="fa fa-calendar fa-lg fa-fw" aria-hidden="true"></i>
+        <div *ngIf="submitted && messageForm.controls.date.errors" class="feedback">
+          <div *ngIf="messageForm.controls.date.errors.required">Date of birth is required</div>
+        </div>
+      </div>
+    </label>
+
+    <input type="submit" value="Sign up!" class="btn btn-success">
+    <hr>
+    <u><a routerLink="/">Do you already have an account? Sign In!</a></u>
+  </form>
+</div>

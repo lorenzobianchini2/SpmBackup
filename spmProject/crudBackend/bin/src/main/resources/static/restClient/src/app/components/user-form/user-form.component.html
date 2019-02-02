@@ -1,0 +1,43 @@
+<app-nav></app-nav>
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+<div id="form">
+  <form [formGroup]="messageForm" (ngSubmit)="processForm()">
+
+    <h1>Sign In</h1>
+
+    <div class="error">
+      <div>{{existingEmail}}</div>
+    </div>
+    <label>
+      <div class="inputWithIcon">
+        <div class="form group">
+          <input type="text" formControlName="username" name="fname" class="form-control" [(ngModel)]="user.username"
+            placeholder="Username or email address">
+          <i class="fa fa-user fa-lg fa-fw" aria-hidden="true"></i>
+          <div *ngIf="submitted && messageForm.controls.username.errors" class="feedback">
+            <div *ngIf="messageForm.controls.username.errors.required">Username is required</div>
+          </div>
+        </div>
+      </div>
+    </label>
+
+    <label>
+      <div class="inputWithIcon">
+        <div class="form group">
+          <input type="password" formControlName="password" name="lname" class="form-control" [(ngModel)]="user.password"
+            placeholder="Password">
+          <i class="fa fa-lock fa-lg fa-fw" aria-hidden="true"></i>
+          <div *ngIf="submitted && messageForm.controls.password.errors" class="feedback">
+            <div *ngIf="messageForm.controls.password.errors.required">Password is required</div>
+          </div>
+        </div>
+      </div>
+    </label>
+
+    <input type="submit" value="Login" class="btn btn-success">
+
+    <hr>
+
+    <u><a routerLink="/fp">Password Recovery</a></u>
+  </form>
+</div>

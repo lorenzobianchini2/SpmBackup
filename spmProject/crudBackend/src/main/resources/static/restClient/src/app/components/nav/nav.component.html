@@ -1,0 +1,41 @@
+<header>
+  <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+    <div class="container">
+      <a class="navbar-brand" routerLink="/">SPM Project</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div *ngIf="isLoggedIn" class="navbar-nav ml-auto">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/">Public repo</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/hp">Private repo</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/ud">Welcome, {{id}}!</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/" (click)="logout()">
+                Logout <i class="fas fa-sign-out-alt" aria-hidden="true"></i>
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div *ngIf="!isLoggedIn" class="navbar-nav ml-auto">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" id="#signIn" routerLink="/uf"> Sign In </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/reg"> Sign up</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>

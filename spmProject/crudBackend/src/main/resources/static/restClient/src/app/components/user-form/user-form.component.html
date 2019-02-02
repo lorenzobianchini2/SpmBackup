@@ -1,0 +1,46 @@
+<app-nav></app-nav>
+<div class="container">
+  <div class="row">
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
+      <form [formGroup]="messageForm" (ngSubmit)="processForm()">
+        <h1>Sign In</h1>
+        <div *ngIf="alert" class="alert alert-danger" role="alert">
+          {{existingEmail}}
+        </div>
+        <div class="form-group">
+          <label>Username or E-Mail address</label>
+          <div class="inputWithIcon">
+            <input type="text" formControlName="username" class="form-control" [(ngModel)]="user.username" placeholder="Username or E-Mail address"
+              title="Username or E-Mail address">
+            <i class="fas fa-user fa-lg fa-fw" aria-hidden="true"></i>
+            <div *ngIf="submitted && messageForm.controls.username.errors" class="feedback">
+              <div *ngIf="messageForm.controls.username.errors.required">Username or E-Mail is required</div>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Password</label>
+          <div class="inputWithIcon">
+            <input type="password" formControlName="password" class="form-control" [(ngModel)]="user.password"
+              placeholder="Password" title="Password">
+            <i class="fas fa-key fa-lg fa-fw" aria-hidden="true"></i>
+            <div *ngIf="submitted && messageForm.controls.password.errors" class="feedback">
+              <div *ngIf="messageForm.controls.password.errors.required">Password is required</div>
+            </div>
+          </div>
+        </div>
+        <div class="wrapper">
+          <button type="submit" class="btn btn-primary">Sign In!</button>
+        </div>
+        <hr>
+        <div class="wrapper">
+          <a class="recovery" routerLink="/fp">
+            Can not remember the password? Click here!
+          </a>
+        </div>
+      </form>
+    </div>
+    <div class="col-md-4"></div>
+  </div>
+</div>

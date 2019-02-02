@@ -1,0 +1,39 @@
+<app-nav></app-nav>
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+<div id="form">
+  <form [formGroup]="messageForm" (ngSubmit)="processForm()">
+    <h1>Change password</h1>
+    <div class="error">
+      <div>{{existingUsername}}</div>
+    </div>
+    <label>
+      <div class="inputWithIcon">
+        <input type="password" #password pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" formControlName="password" class="form-control"
+          [(ngModel)]="user.password" placeholder="Password" title="Password">
+        <i class="fa fa-lock fa-lg fa-fw" aria-hidden="true"></i>
+        <div *ngIf="submitted && messageForm.controls.password.errors" class="feedback">
+          <div *ngIf="messageForm.controls.password.errors.required">Password is required</div>
+          <div *ngIf="messageForm.controls.password.errors.pattern">The password must contain:<br>- at least 8
+            characters;<br>- at least one uppercase letter;<br>- at least one lowercase letter;<br>- at least one
+            number.
+          </div>
+        </div>
+      </div>
+    </label>
+    <label>
+      <div class="inputWithIcon">
+        <input type="password" #repassword pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" formControlName="repassword" class="form-control"
+          [(ngModel)]="user.repassword" placeholder="Password" title="Password">
+        <i class="fa fa-lock fa-lg fa-fw" aria-hidden="true"></i>
+        <div *ngIf="submitted && messageForm.controls.repassword.errors" class="feedback">
+          <div *ngIf="messageForm.controls.repassword.errors.required">Password is required</div>
+          <div *ngIf="messageForm.controls.repassword.errors.pattern">The password must contain:<br>- at least 8
+            characters;<br>- at least one uppercase letter;<br>- at least one lowercase letter;<br>- at least one
+            number.
+          </div>
+        </div>
+      </div>
+    </label>
+    <input type="submit" value="Change password!" class="btn btn-success">
+  </form>
+</div>

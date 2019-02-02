@@ -1,0 +1,118 @@
+<app-nav></app-nav>
+<div class="container">
+  <div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+      <form [formGroup]="messageForm" (ngSubmit)="processForm()">
+        <h1>Sign Up</h1>
+        <div *ngIf="alert" class="alert alert-danger" role="alert">
+          {{existingUsername}}
+        </div>
+        <div class="form-group">
+          <label>Username</label>
+          <div class="inputWithIcon">
+            <input type="text" formControlName="usernameReg" class="form-control" [(ngModel)]="user.username"
+              placeholder="Username" title="Username">
+            <i class="fas fa-user fa-lg fa-fw" aria-hidden="true"></i>
+            <div *ngIf="submitted && messageForm.controls.usernameReg.errors" class="feedback">
+              <div *ngIf="messageForm.controls.usernameReg.errors.required">Username is required</div>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Password</label>
+          <div class="inputWithIcon">
+            <input type="password" formControlName="passwordReg" class="form-control" [(ngModel)]="user.password"
+              placeholder="Password" title="Password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" aria-describedby="passwordHelpBlock">
+            <i class="fas fa-key fa-lg fa-fw" aria-hidden="true"></i>
+            <div *ngIf="submitted && messageForm.controls.passwordReg.errors" class="feedback">
+              <div *ngIf="messageForm.controls.passwordReg.errors.required">Password is required</div>
+              <div *ngIf="messageForm.controls.passwordReg.errors.pattern">The password must contain:<br>- at least 8
+                characters;<br>- at least one uppercase letter;<br>- at least one lowercase letter;<br>- at least one
+                number.
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Repeat the password</label>
+          <div class="inputWithIcon">
+            <input type="password" formControlName="repasswordReg" class="form-control" [(ngModel)]="user.repassword"
+              placeholder="Repeat the password" title="Repeat the password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}">
+            <i class="fas fa-key fa-lg fa-fw" aria-hidden="true"></i>
+            <div *ngIf="submitted && messageForm.controls.repasswordReg.errors" class="feedback">
+              <div *ngIf="messageForm.controls.repasswordReg.errors.required">Password is required</div>
+              <div *ngIf="messageForm.controls.repasswordReg.errors.pattern">The password must contain:<br>- at least 8
+                characters;<br>- at least one uppercase letter;<br>- at least one lowercase letter;<br>- at least one
+                number.
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Affiliation</label>
+          <div class="inputWithIcon">
+            <input type="text" formControlName="affiliation" class="form-control" [(ngModel)]="user.affiliation"
+              placeholder="Affiliation" title="Affiliation">
+            <i class="fas fa-industry fa-lg fa-fw" aria-hidden="true"></i>
+            <div *ngIf="submitted && messageForm.controls.affiliation.errors" class="feedback">
+              <div *ngIf="messageForm.controls.affiliation.errors.required">Affiliation is required</div>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Name</label>
+          <div class="inputWithIcon">
+            <input type="text" formControlName="fname" class="form-control" [(ngModel)]="user.name" placeholder="Name"
+              title="Name">
+            <i class="fas fa-address-card fa-lg fa-fw" aria-hidden="true"></i>
+            <div *ngIf="submitted && messageForm.controls.fname.errors" class="feedback">
+              <div *ngIf="messageForm.controls.fname.errors.required">Name is required</div>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Surname</label>
+          <div class="inputWithIcon">
+            <input type="text" formControlName="lname" class="form-control" [(ngModel)]="user.surname" placeholder="Surname"
+              title="Surname">
+            <i class="fas fa-address-card fa-lg fa-fw" aria-hidden="true"></i>
+            <div *ngIf="submitted && messageForm.controls.lname.errors" class="feedback">
+              <div *ngIf="messageForm.controls.lname.errors.required">Surname is required</div>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>E-Mail</label>
+          <div class="inputWithIcon">
+            <input type="email" formControlName="email" class="form-control" [(ngModel)]="user.email" placeholder="E-Mail address"
+              title="E-Mail address">
+            <i class="fas fa-envelope fa-lg fa-fw" aria-hidden="true"></i>
+            <div *ngIf="submitted && messageForm.controls.email.errors" class="feedback">
+              <div *ngIf="messageForm.controls.email.errors.required">E-Mail address is required</div>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Date of birth</label>
+          <div class="inputWithIcon">
+            <input type="date" formControlName="date" class="form-control" [(ngModel)]="user.date_of_birth" placeholder="Date of birth"
+              title="Date of birth" min=1970-0-01 max={{date}}>
+            <i class="fas fa-calendar fa-lg fa-fw" aria-hidden="true"></i>
+            <div *ngIf="submitted && messageForm.controls.date.errors" class="feedback">
+              <div *ngIf="messageForm.controls.date.errors.required">Date of birth is required</div>
+            </div>
+          </div>
+        </div>
+        <div class="wrapper">
+          <button type="submit" class="btn btn-primary">Sign Up!</button>
+        </div>
+        <hr>
+        <div class="wrapper">
+          <a class="recovery" routerLink="/uf">Do you already have an account? Sign In!</a>
+        </div>
+      </form>
+    </div>
+    <div class="col-md-3"></div>
+  </div>
+</div>

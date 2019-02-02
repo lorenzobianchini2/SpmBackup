@@ -1,0 +1,51 @@
+<app-nav></app-nav>
+<div class="container">
+  <div class="row">
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
+      <form [formGroup]="messageForm" (ngSubmit)="processForm(password.value, repassword.value)">
+        <h1>Change password</h1>
+        <div *ngIf="alert" class="alert alert-danger" role="alert">
+          {{existingUsername}}
+        </div>
+        <div *ngIf="done" class="alert alert-success" role="alert">
+          {{success}}
+        </div>
+        <div class="form-group">
+          <label>Password</label>
+          <div class="inputWithIcon">
+            <input type="password" formControlName="password" class="form-control" [(ngModel)]="user.password"
+              placeholder="Password" title="Password" #password pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}">
+            <i class="fas fa-key fa-lg fa-fw" aria-hidden="true"></i>
+            <div *ngIf="submitted && messageForm.controls.password.errors" class="feedback">
+              <div *ngIf="messageForm.controls.password.errors.required">Password is required</div>
+              <div *ngIf="messageForm.controls.password.errors.pattern">The password must contain:<br>- at least 8
+                characters;<br>- at least one uppercase letter;<br>- at least one lowercase letter;<br>- at least one
+                number.
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Repeat the password</label>
+          <div class="inputWithIcon">
+            <input type="password" formControlName="repassword" class="form-control" [(ngModel)]="user.repassword"
+              placeholder="Repeat password" title="Repeat password" #repassword pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}">
+            <i class="fas fa-key fa-lg fa-fw" aria-hidden="true"></i>
+            <div *ngIf="submitted && messageForm.controls.repassword.errors" class="feedback">
+              <div *ngIf="messageForm.controls.repassword.errors.required">Password is required</div>
+              <div *ngIf="messageForm.controls.repassword.errors.pattern">The password must contain:<br>- at least 8
+                characters;<br>- at least one uppercase letter;<br>- at least one lowercase letter;<br>- at least one
+                number.
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="wrapper">
+          <button type="submit" class="btn btn-primary">Change password!</button>
+        </div>
+      </form>
+    </div>
+    <div class="col-md-4"></div>
+  </div>
+</div>

@@ -1,0 +1,19 @@
+<app-nav></app-nav>
+
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+<div class="sidebar">
+  <p>List of repo</p>
+  <form (ngSubmit)="createFolder(folderName.value)">
+    <div class="inputWithIcon">
+      <input type="text" #folderName placeholder="Folder name" title="Folder name">
+      <i class="fa fa-folder fa-lg fa-fw" aria-hidden="true"></i>
+      <input type="submit" value="New folder" class="newFolder">
+    </div>
+  </form>
+</div>
+
+<div class="menu">
+  <div>
+    <h1>Page for the private repository!</h1>
+  </div>
+</div>
